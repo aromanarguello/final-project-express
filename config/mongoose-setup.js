@@ -9,4 +9,4 @@ mongoose.connect( process.env.MONGODB_URI, { useMongoClient: true } )
   .catch( err => {
     console.log( 'Mongoose connection FAILED! 🚨🚨🚨🚨🚨🚨🚨' );
     console.log( err )
-  })
+  });
