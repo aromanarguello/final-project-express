@@ -1,9 +1,9 @@
 const mongoose   = require('mongoose');
-const Schema     = mongoose.Schema();
+const Schema     = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    firstName: {
+      firstName: {
       type:     String,
       required: [true, "Please enter your first name."]
     },
@@ -25,7 +25,7 @@ const userSchema = new Schema(
   }, //END USERSCHEMA
 
   {
-    timeStamps: true;
+    timeStamps: true
   } // END TIMESTAMPS
 );
 

@@ -44,7 +44,7 @@ app.use(passport.session());
 
 
 // BEGIN ROUTES -----------------------------
-const mainApi = require('./routes/main-api');
+const mainApi = require('./routes/main-api-router');
 app.use('/api', mainApi);
 
 const userApi = require('./routes/user-router');
