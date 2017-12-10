@@ -14,13 +14,13 @@ router.get('/recipes', (req, res, next) => {
   })
   .catch( err => {
     console.log( err );
-    console.log( "GET /recipes ERROR");
+    console.log( 'GET /recipes ERROR');
 
-    res.status(500).json({ error: "Recipe database error"});
+    res.status(500).json({ error: 'Recipe database error'});
   });
 });
 
-router.post("/recipes", (req, res, next)=>{
+router.post('/recipes', (req, res, next)=>{
   const theRecipe = new RecipesModel({
     name:         req.body.name,
     calories:     req.body.calories,
@@ -42,7 +42,7 @@ router.post("/recipes", (req, res, next)=>{
         res.status(400).json(err.errors);
       }
       else {
-        res.status(500).json({ err: "Recipe list database error"})
+        res.status(500).json({ err: 'Recipe list database error'})
       }
     })
 })

@@ -48,7 +48,7 @@ const mainApi = require('./routes/main-api-router');
 app.use('/api', mainApi);
 
 const userApi = require('./routes/user-router');
-app.use("/api", userApi);
+app.use('/api', userApi);
 // END ROUTES ------------------------------
 
 module.exports = app;

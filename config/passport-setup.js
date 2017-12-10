@@ -9,7 +9,7 @@ passport.deserializeUser( (idFromSession, done) => {
   UserModel
   .findById(idFromSession)
   .then( userFromDB => {
-    done(null, userFromDb);
+    done(null, userFromDB);
   })
   .catch( err => {
     done( err );
