@@ -7,7 +7,7 @@ const router = express.Router();
 
 // POST '/signup' --------------------------------------------------------
 // -----------------------------------------------------------------------
-router.post('/signup', (req, res, next)=> {
+router.post('/join', (req, res, next)=> {
   if(req.body.password === undefined ||
      req.body.password.length < 6    ||
      req.body.password.match(/[^a-z0-9]/i) === null ){
@@ -28,7 +28,7 @@ router.post('/signup', (req, res, next)=> {
           firstName:         req.body.firstName,
           lastName:          req.body.lastName,
           email:             req.body.email,
-          encryptedPassword: req.body.scrambledPassword
+          encryptedPassword: scrambledPassword
         });
 
         return theUser.save();
@@ -59,6 +59,8 @@ router.post('/signup', (req, res, next)=> {
     router.post('/login', (req, res, next) => {
       UserModel.findOne({ email: req.body.email })
       .then( userFromDb => {
+        console.log(req.body.email)
+        console.log(userFromDb)
         if( userFromDb === null) {
         res.status(400).json({ error: 'email is invalid' })
         return;
@@ -74,7 +76,7 @@ router.post('/signup', (req, res, next)=> {
 
         req.login(userFromDb, ( err ) => {
           userFromDb.encryptedPassword = undefined;
-          req.status(200).json({
+          res.status(200).json({
             isLoggedIn: true,
             userInfo: userFromDb
           });
