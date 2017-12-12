@@ -115,7 +115,7 @@ router.post('/join', (req, res, next)=> {
         });
       }
       else {
-        req.status(200).json({
+        res.status(200).json({
           isLoggedIn: false,
           userInfo:   null
         })

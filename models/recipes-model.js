@@ -1,7 +1,5 @@
-const mongoose = require('mongoose');
-
-const Schema   = mongoose.Schema;
-
+const mongoose     = require('mongoose');
+const Schema       = mongoose.Schema;
 const recipeSchema = new Schema(
   {
     name: {
@@ -24,7 +22,14 @@ const recipeSchema = new Schema(
       // default: './images/default-image.jpg'
      },
 
-    description: { type: String }
+    description: {
+      type:     String
+    },
+
+    allergies: {
+      peanuts:  Boolean,
+      lactose:  Boolean
+    }
   } // END
 );
 
