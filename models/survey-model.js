@@ -13,6 +13,8 @@ const surveySchema = new Schema(
     energyOne:   { type: Boolean},
     energyTwo:   { type: Boolean},
     energyThree: { type: Boolean}
+
+
   }
 )
 

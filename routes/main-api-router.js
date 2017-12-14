@@ -48,7 +48,8 @@ router.post('/recipes', (req, res, next)=>{
     })
 });
 
-router.post('/survey', (req, res, next) =>{
+router.post('/survey/:surveyId', (req, res, next) =>{
+  if(req.user){
   const surveyAnswers = new SurveyModel({
     height: req.body.height,
     weight: req.body.weight,
@@ -74,7 +75,26 @@ router.post('/survey', (req, res, next) =>{
         res.status(500).json({ err: 'Survey database error'})
       }
     })
-});
+  }
+}); // POST /survey
+
+router.get('/survey', (req, res, next) => {
+  if(req.user) {
+  SurveyModel.findById(req.params.surveyId)
+  .then( surveyFromDb => {
+    if(surveyFromDb === null) {
+      res.status(404).json({ error: "Survey Result not found"})
+    }
+    else {
+      res.status(200).json(surveyFromDb);
+    }
+  })
+  .catch( err => {
+      console.log("GET /survey/:surveyId ERROR!");
+      res.status(500).json({ error: "Survey database error"});
+  });
+}
+}); // GET /survey/:surveyId
 
 
 
