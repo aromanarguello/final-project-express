@@ -12,9 +12,14 @@ const surveySchema = new Schema(
                 },
     energyOne:   { type: Boolean},
     energyTwo:   { type: Boolean},
-    energyThree: { type: Boolean}
-
-
+    energyThree: { type: Boolean},
+    owner:       {
+                   type:     Schema.Types.ObjectId,
+                   required: [true, "Required"]
+                 }
+  },
+  {
+    timestamps: true
   }
 )
 
