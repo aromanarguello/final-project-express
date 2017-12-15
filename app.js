@@ -50,5 +50,9 @@ app.use('/api', mainApi);
 const userApi = require('./routes/user-router');
 app.use('/api', userApi);
 // END ROUTES ------------------------------
+// send the Angular HTML if no Express routes match 
+app.use((req, res, next) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
 
 module.exports = app;
