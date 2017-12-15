@@ -65,6 +65,8 @@ console.log(req.user)
                 peanuts: req.body.peanuts,
                 lactose: req.body.lactose
                },
+    male:        req.body.male,
+    female:      req.body.female,
     energyOne:   req.body.energyOne,
     energyTwo:   req.body.energyTwo,
     energyThree: req.body.energyThree,

@@ -10,9 +10,11 @@ const surveySchema = new Schema(
                   peanuts: { type: Boolean },
                   lactose: { type: Boolean }
                 },
-    energyOne:   { type: Boolean},
-    energyTwo:   { type: Boolean},
-    energyThree: { type: Boolean},
+    energyOne:   { type: Boolean },
+    energyTwo:   { type: Boolean },
+    energyThree: { type: Boolean },
+    male:        { type: Boolean },
+    female:      { type: Boolean },
     owner:       {
                    type:     Schema.Types.ObjectId,
                    required: [true, "Required"]
