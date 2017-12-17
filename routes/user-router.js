@@ -1,8 +1,8 @@
 const express         = require('express');
 const bcrypt          = require('bcrypt');
 const UserModel       = require('../models/user-model');
-const Passport        = require('passport')
-const router = express.Router();
+const Passport        = require('passport');
+const router          = express.Router();
 
 
 // POST '/signup' --------------------------------------------------------
@@ -11,7 +11,7 @@ router.post('/join', (req, res, next)=> {
   if(req.body.password === undefined ||
      req.body.password.length < 6    ||
      req.body.password.match(/[^a-z0-9]/i) === null ){
-     res.status(400).json({ error: 'Password invalid'})
+     res.status(400).json({ error: 'Password invalid'});
      return;
     }
 
@@ -59,10 +59,10 @@ router.post('/join', (req, res, next)=> {
     router.post('/login', (req, res, next) => {
       UserModel.findOne({ email: req.body.email })
       .then( userFromDb => {
-        console.log(req.body.email)
-        console.log(userFromDb)
+        console.log(req.body.email);
+        console.log(userFromDb);
         if( userFromDb === null) {
-        res.status(400).json({ error: 'email is invalid' })
+        res.status(400).json({ error: 'email is invalid' });
         return;
       }
 
@@ -86,7 +86,7 @@ router.post('/join', (req, res, next)=> {
       console.log('Post /login ERROR!');
       console.log( err );
 
-      res.status(500).json({ err: 'Log in database error'})
+      res.status(500).json({ err: 'Log in database error'});
     });
   });
 
@@ -95,7 +95,7 @@ router.post('/join', (req, res, next)=> {
   // DELET api/logout ---------------------------------------------------------
 
   router.delete('/logout', (req, res, next) => {
-    req.logout()
+    req.logout();
 
     res.status(200).json({
       isLoggedIn: false,
@@ -118,8 +118,8 @@ router.post('/join', (req, res, next)=> {
         res.status(200).json({
           isLoggedIn: false,
           userInfo:   null
-        })
+        });
       }
-  })
+  });
 
 module.exports = router;
