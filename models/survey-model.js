@@ -23,9 +23,7 @@ const surveySchema = new Schema(
   {
     timestamps: true
   }
-)
-
-
+);
 
 
 
