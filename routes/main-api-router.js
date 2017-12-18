@@ -2,14 +2,14 @@ const express         = require('express');
 const RecipesModel    = require('../models/recipes-model');
 const UserModel       = require('../models/user-model');
 const SurveyModel     = require('../models/survey-model');
-const Passport        = require('passport')
+const Passport        = require('passport');
 
 const router = express.Router();
 
 router.get('/recipes', (req, res, next) => {
   RecipesModel
   .find()
-  .limit(25)
+  .limit(8)
   .exec()
   .then( recipeResults => {
     res.status(200).json(recipeResults);
@@ -44,15 +44,15 @@ router.post('/recipes', (req, res, next)=>{
         res.status(400).json(err.errors);
       }
       else {
-        res.status(500).json({ err: 'Recipe list database error'})
+        res.status(500).json({ err: 'Recipe list database error'});
       }
-    })
+    });
 });
 
 router.post('/survey', (req, res, next) =>{
-console.log(req.user)
+console.log(req.user);
   if (req.user === undefined) {
-    console.log(req.user)
+    console.log(req.user);
     res.status(500).json({ err: 'Not logged in'});
     return;
   }
@@ -84,9 +84,9 @@ console.log(req.user)
         res.status(400).json(err.errors);
       }
       else {
-        res.status(500).json({ err: 'Survey database error'})
+        res.status(500).json({ err: 'Survey database error'});
       }
-    })
+    });
 
 }); // POST /survey
 
@@ -97,7 +97,7 @@ router.get("/results", (req, res, next) => {
     .limit(1)
     .exec()
     .then((surveyResults) => {
-      console.log(surveyResults.height)
+      console.log(surveyResults.height);
       res.status(200).json(surveyResults);
 
     })
@@ -106,11 +106,11 @@ router.get("/results", (req, res, next) => {
         res.status(400).json(err.errors);
       }
       else {
-        res.status(500).json({ err: 'Survey result error'})
+        res.status(500).json({ err: 'Survey result error'});
       }
-    })
+    });
 
-})
+});
 
 // router.get('/survey/:surveyId', (req, res, next) => {
 //
